@@ -41,9 +41,7 @@ The following functions are implemented:
 ## Installation
 
 ```{r install-ex, eval=FALSE}
-devtools::install_git("https://gitlab.com/hrbrmstr/packettotal.git")
-# or
-devtools::install_github("hrbrmstr/packettotal")
+install.packages("packettotal", repos = "https://cinc.rud.is/")
 ```
 
 ## Usage

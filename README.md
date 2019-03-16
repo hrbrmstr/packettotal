@@ -39,9 +39,7 @@ The following functions are implemented:
 ## Installation
 
 ``` r
-devtools::install_git("https://gitlab.com/hrbrmstr/packettotal.git")
-# or
-devtools::install_github("hrbrmstr/packettotal")
+install.packages("packettotal", repos = "https://cinc.rud.is/")
 ```
 
 ## Usage
@@ -58,16 +56,16 @@ packageVersion("packettotal")
 str(pt_random(), 2)
 ## List of 1
 ##  $ pcap_metadata:List of 11
-##   ..$ md5               : chr "e205fca1d43f5588afa2ccde979f056a"
-##   ..$ name              : chr "20130820_c_win1_00071_pc.pcap"
-##   ..$ byte_size         : int 1694276
+##   ..$ md5               : chr "62286d51c23ee508a4687500becbaf52"
+##   ..$ name              : chr "20130820_c_win6_00023_pc.pcap"
+##   ..$ byte_size         : int 1538604
 ##   ..$ logs              : chr [1:8] "conn" "dns" "weird" "files" ...
-##   ..$ analyzed_date     : chr "2018-10-19 05:04:42"
-##   ..$ download_link     : chr "/pcaps/e205fca1d43f5588afa2ccde979f056a/download"
-##   ..$ analysis_link     : chr "/pcaps/e205fca1d43f5588afa2ccde979f056a/analysis"
-##   ..$ similar_pcaps_link: chr "/pcaps/e205fca1d43f5588afa2ccde979f056a/similar"
-##   ..$ pcap_glyph_link   : chr "https://s3.amazonaws.com/packettotalpub/files/e205fca1d43f5588afa2ccde979f056a/pcap-mosaic.png"
-##   ..$ packettotal_link  : chr "https://packettotal.com/app/analysis?id=e205fca1d43f5588afa2ccde979f056a"
+##   ..$ analyzed_date     : chr "2018-10-19 00:55:42"
+##   ..$ download_link     : chr "/pcaps/62286d51c23ee508a4687500becbaf52/download"
+##   ..$ analysis_link     : chr "/pcaps/62286d51c23ee508a4687500becbaf52/analysis"
+##   ..$ similar_pcaps_link: chr "/pcaps/62286d51c23ee508a4687500becbaf52/similar"
+##   ..$ pcap_glyph_link   : chr "https://s3.amazonaws.com/packettotalpub/files/62286d51c23ee508a4687500becbaf52/pcap-mosaic.png"
+##   ..$ packettotal_link  : chr "https://packettotal.com/app/analysis?id=62286d51c23ee508a4687500becbaf52"
 ##   ..$ message           : chr "This PCAP was selected randomly, since no id was specified."
 ```
 
@@ -148,10 +146,10 @@ str(pt_similar("536cf06ca83704844d789f56caf22ee6"), 2)
 
 ## packettotal Metrics
 
-| Lang | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
-| :--- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
-| R    |       13 | 0.93 | 200 | 0.93 |          69 | 0.73 |      125 | 0.69 |
-| Rmd  |        1 | 0.07 |  14 | 0.07 |          25 | 0.27 |       55 | 0.31 |
+| Lang | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines | (%) |
+| :--- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | --: |
+| R    |       13 | 0.93 | 200 | 0.94 |          69 | 0.73 |      125 | 0.7 |
+| Rmd  |        1 | 0.07 |  13 | 0.06 |          25 | 0.27 |       54 | 0.3 |
 
 ## Code of Conduct
 
