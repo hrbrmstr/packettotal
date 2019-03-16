@@ -4,13 +4,27 @@
 \name{packettotal}
 \alias{packettotal}
 \alias{packettotal-package}
-\title{...}
+\title{Lookup and Analyze Packet Capture ('PCAP') Files}
 \description{
+'PacketTotal' (\url{https://packettotal.com/}) is an engine for analyzing,
+categorizing, and sharing packet capture ('PCAP') files. The tool was built
+with the information security community in mind and has applications in malware
+analysis and network forensics. Methods are provided to query search for and
+analyze packet capture files.
+}
+\details{
 \itemize{
 \item URL: \url{https://gitlab.com/hrbrmstr/packettotal}
 \item BugReports: \url{https://gitlab.com/hrbrmstr/packettotal/issues}
 }
 }
+\references{
+\itemize{
+\item \url{https://packettotal.com/}
+\item \url{https://packettotal.com/api-docs/#/}
+}
+}
 \author{
 Bob Rudis (bob@rud.is)
 }
+\keyword{internal}

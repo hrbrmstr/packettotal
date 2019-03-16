@@ -4,21 +4,43 @@ editor_options:
   chunk_output_type: inline
 ---
 ```{r pkg-knitr-opts, include=FALSE}
-knitr$opts_chunk$set(collapse=TRUE, fig.retina=2, message=FALSE, warning=FALSE)
+knitr::opts_chunk$set(collapse=TRUE, fig.retina=2, message=FALSE, warning=FALSE)
 options(width=120)
 ```
 
 [![Travis-CI Build Status](https://travis-ci.org/hrbrmstr/packettotal.svg?branch=master)](https://travis-ci.org/hrbrmstr/packettotal) 
 [![Coverage Status](https://codecov.io/gh/hrbrmstr/packettotal/branch/master/graph/badge.svg)](https://codecov.io/gh/hrbrmstr/packettotal)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/packettotal)](https://cran.r-project.org/package=packettotal)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/packettotal)](https://cran.r-project.org/package=packettotal)
 
 # packettotal
 
+Lookup and Analyze Packet Capture ('PCAP') Files
+
 ## Description
+
+'PacketTotal' (<https://packettotal.com/>) is an engine for analyzing, 
+categorizing, and sharing packet capture ('PCAP') files. The tool was built 
+with the information security community in mind and has applications in malware 
+analysis and network forensics. Methods are provided to query search for and 
+analyze packet capture files.
+
+## TODO
+
+- `/search/deep/` : <https://packettotal.com/api-docs/#/search/post_search_deep>
+- `/search/deep/results/{search_id}` : <https://packettotal.com/api-docs/#/search/get_search_deep_results__search_id_>
 
 ## What's Inside The Tin
 
 The following functions are implemented:
+
+- `packettotal_api_key`:	Get or set PACKETTOTAL_API_KEY value
+- `pt_detail`:	Get a detailed report of PCAP traffic, carved files, signatures, and top-talkers.
+- `pt_download`:	Download a PCAP analysis archive. The result is a zip archive containing the PCAP itself, CSVs representing various analysis results, and all carved files.
+- `pt_info`:	Get high-level information about a specific PCAP file.
+- `pt_random`:	Get high-level information about a random PCAP file.
+- `pt_search`:	Search with term or with a valid Lucene query.
+- `pt_similar`:	Get a similarity graph relative to the current PCAP file.
+- `pt_usage`:	Retrive usage and subscription plan information.
 
 ## Installation
 
@@ -36,6 +58,26 @@ library(packettotal)
 # current version
 packageVersion("packettotal")
 
+```
+
+```{r random}
+str(pt_random(), 2)
+```
+
+```{r search}
+str(pt_search("evil.com"), 2)
+```
+
+```{r info}
+str(pt_info("d210f4dbea97949f694e849507951881"), 2)
+```
+
+```{r detail}
+str(pt_detail("d210f4dbea97949f694e849507951881"), 2)
+```
+
+```{r similar}
+str(pt_similar("536cf06ca83704844d789f56caf22ee6"), 2)
 ```
 
 ## packettotal Metrics
