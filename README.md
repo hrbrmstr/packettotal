@@ -17,18 +17,13 @@ built with the information security community in mind and has
 applications in malware analysis and network forensics. Methods are
 provided to query search for and analyze packet capture files.
 
-## TODO
-
-  - `/search/deep/` :
-    <https://packettotal.com/api-docs/#/search/post_search_deep>
-  - `/search/deep/results/{search_id}` :
-    <https://packettotal.com/api-docs/#/search/get_search_deep_results__search_id_>
-
 ## What’s Inside The Tin
 
 The following functions are implemented:
 
   - `packettotal_api_key`: Get or set PACKETTOTAL\_API\_KEY value
+  - `pt_deep_search`/`pt_get_search_results`: Create a new deep search
+    task. Search for a term or with a Lucene query.
   - `pt_detail`: Get a detailed report of PCAP traffic, carved files,
     signatures, and top-talkers.
   - `pt_download`: Download a PCAP analysis archive. The result is a zip
@@ -63,16 +58,16 @@ packageVersion("packettotal")
 str(pt_random(), 2)
 ## List of 1
 ##  $ pcap_metadata:List of 11
-##   ..$ md5               : chr "4be31ddcbfe4af10f0fbcb83681d1b67"
-##   ..$ name              : chr "20130820_c_win6_00012_pc.pcap"
-##   ..$ byte_size         : int 1552408
+##   ..$ md5               : chr "e205fca1d43f5588afa2ccde979f056a"
+##   ..$ name              : chr "20130820_c_win1_00071_pc.pcap"
+##   ..$ byte_size         : int 1694276
 ##   ..$ logs              : chr [1:8] "conn" "dns" "weird" "files" ...
-##   ..$ analyzed_date     : chr "2018-10-19 00:50:01"
-##   ..$ download_link     : chr "/pcaps/4be31ddcbfe4af10f0fbcb83681d1b67/download"
-##   ..$ analysis_link     : chr "/pcaps/4be31ddcbfe4af10f0fbcb83681d1b67/analysis"
-##   ..$ similar_pcaps_link: chr "/pcaps/4be31ddcbfe4af10f0fbcb83681d1b67/similar"
-##   ..$ pcap_glyph_link   : chr "https://s3.amazonaws.com/packettotalpub/files/4be31ddcbfe4af10f0fbcb83681d1b67/pcap-mosaic.png"
-##   ..$ packettotal_link  : chr "https://packettotal.com/app/analysis?id=4be31ddcbfe4af10f0fbcb83681d1b67"
+##   ..$ analyzed_date     : chr "2018-10-19 05:04:42"
+##   ..$ download_link     : chr "/pcaps/e205fca1d43f5588afa2ccde979f056a/download"
+##   ..$ analysis_link     : chr "/pcaps/e205fca1d43f5588afa2ccde979f056a/analysis"
+##   ..$ similar_pcaps_link: chr "/pcaps/e205fca1d43f5588afa2ccde979f056a/similar"
+##   ..$ pcap_glyph_link   : chr "https://s3.amazonaws.com/packettotalpub/files/e205fca1d43f5588afa2ccde979f056a/pcap-mosaic.png"
+##   ..$ packettotal_link  : chr "https://packettotal.com/app/analysis?id=e205fca1d43f5588afa2ccde979f056a"
 ##   ..$ message           : chr "This PCAP was selected randomly, since no id was specified."
 ```
 
@@ -84,6 +79,29 @@ str(pt_search("evil.com"), 2)
 ##   ..$ id         : chr [1:5] "b2a094b1882f52ab8befd3d8ad9d7f9a" "0826bfbd4a68519945b9af594a5a87d7" "385b9a5b3da0d56260f2be329e110795" "8e13e95bc12ad8415c4d8e8d313affac" ...
 ##   ..$ found_in   :List of 5
 ##   ..$ match_score: num [1:5] 49.5 49.3 44.2 31.8 31.6
+```
+
+``` r
+(res <- pt_deep_search("botnet OR malware"))
+## $search_id
+## [1] "089f9e75d8142e185e84e8668da4b9b8"
+## 
+## $message
+## [1] "Deep search exists."
+## 
+## $results_uri
+## [1] "/v1/search/deep/results/089f9e75d8142e185e84e8668da4b9b8"
+## 
+## attr(,"class")
+## [1] "pt_search_result"
+
+str(pt_get_search_results(res), 2)
+## List of 2
+##  $ results     :'data.frame':    1819 obs. of  3 variables:
+##   ..$ id         : chr [1:1819] "bd00b1dca3e5586dccffdc23579b0d39" "ba796317651f2064b1ca193e6e2cf947" "52419b8eba8af8fe502f8be324b67cb8" "da0023e2c4ca40ac480a4fdb930e7745" ...
+##   ..$ found_in   :List of 1819
+##   ..$ match_score: num [1:1819] 1584 1079 749 704 653 ...
+##  $ result_count: int 1819
 ```
 
 ``` r
@@ -132,8 +150,8 @@ str(pt_similar("536cf06ca83704844d789f56caf22ee6"), 2)
 
 | Lang | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
 | :--- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
-| R    |       12 | 0.92 | 152 | 0.93 |          52 | 0.68 |      111 | 0.67 |
-| Rmd  |        1 | 0.08 |  12 | 0.07 |          25 | 0.32 |       55 | 0.33 |
+| R    |       13 | 0.93 | 200 | 0.93 |          69 | 0.73 |      125 | 0.69 |
+| Rmd  |        1 | 0.07 |  14 | 0.07 |          25 | 0.27 |       55 | 0.31 |
 
 ## Code of Conduct
 

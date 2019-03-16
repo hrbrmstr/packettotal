@@ -30,3 +30,4 @@ pt_search <- function(query, api_key = packettotal_api_key()) {
   out
 
 }
+

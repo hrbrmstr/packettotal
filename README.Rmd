@@ -1,7 +1,7 @@
 ---
 output: rmarkdown::github_document
 editor_options: 
-  chunk_output_type: inline
+  chunk_output_type: console
 ---
 ```{r pkg-knitr-opts, include=FALSE}
 knitr::opts_chunk$set(collapse=TRUE, fig.retina=2, message=FALSE, warning=FALSE)
@@ -24,16 +24,12 @@ with the information security community in mind and has applications in malware
 analysis and network forensics. Methods are provided to query search for and 
 analyze packet capture files.
 
-## TODO
-
-- `/search/deep/` : <https://packettotal.com/api-docs/#/search/post_search_deep>
-- `/search/deep/results/{search_id}` : <https://packettotal.com/api-docs/#/search/get_search_deep_results__search_id_>
-
 ## What's Inside The Tin
 
 The following functions are implemented:
 
 - `packettotal_api_key`:	Get or set PACKETTOTAL_API_KEY value
+- `pt_deep_search`/`pt_get_search_results`:	Create a new deep search task. Search for a term or with a Lucene query.
 - `pt_detail`:	Get a detailed report of PCAP traffic, carved files, signatures, and top-talkers.
 - `pt_download`:	Download a PCAP analysis archive. The result is a zip archive containing the PCAP itself, CSVs representing various analysis results, and all carved files.
 - `pt_info`:	Get high-level information about a specific PCAP file.
@@ -66,6 +62,12 @@ str(pt_random(), 2)
 
 ```{r search}
 str(pt_search("evil.com"), 2)
+```
+
+```{r deep-search}
+(res <- pt_deep_search("botnet OR malware"))
+
+str(pt_get_search_results(res), 2)
 ```
 
 ```{r info}
