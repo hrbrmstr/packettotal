@@ -1,6 +1,7 @@
 context("minimal package functionality")
 
 skip_on_cran()
+skip_on_travis()
 
 expect_true("user" %in% names(pt_usage()))
 
