@@ -18,9 +18,9 @@ pt_usage <- function(api_key = packettotal_api_key()) {
 
   httr::stop_for_status(res)
 
-  out <- httr::content(res, as = "text")
+  out <- httr::content(res, as = "text", encoding = "UTF-8")
 
-  out <- jsonlite::fromJSON(out, encoding = "UTF-8")
+  out <- jsonlite::fromJSON(out)
 
   out
 
